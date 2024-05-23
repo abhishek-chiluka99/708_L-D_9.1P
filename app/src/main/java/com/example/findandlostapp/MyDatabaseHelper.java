@@ -25,6 +25,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static  final  String COLUMN_DATE = "item_date";
     private static final String COLUMN_LOC = "item_loc";
 
+    private static final String COLUMN_LAT = "item_lat";
+    private static final String COLUMN_LONG = "item_long";
+
     public MyDatabaseHelper(@Nullable Context context){
         super(context,DATABASE_NAME ,null,DATABASE_VERSION);
         this.context = context;
@@ -39,7 +42,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_PHONE + " TEXT, " +
                 COLUMN_DESC + " TEXT, " +
                 COLUMN_DATE + " TEXT, " +
-                COLUMN_LOC + " TEXT);" ;
+                COLUMN_LOC + " TEXT, " +
+                COLUMN_LAT + " REAL , " +
+                COLUMN_LONG + " REAL );" ;
         db.execSQL(query);
     }
 
@@ -49,7 +54,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             onCreate(db);
     }
 
-    void add_item(String title, String name, String phone, String desc, String date, String loc){
+    void add_item(String title, String name, String phone, String desc, String date, String loc, Double lat, Double lng){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -59,6 +64,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_DESC,desc);
         cv.put(COLUMN_DATE,date);
         cv.put(COLUMN_LOC,loc);
+        cv.put(COLUMN_LAT, lat );
+        cv.put(COLUMN_LONG, lng);
         long res = db.insert(TABLE_NAME, null,cv);
 
         if(res == -1){

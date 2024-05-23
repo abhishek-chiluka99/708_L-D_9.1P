@@ -30,10 +30,13 @@ android {
 
 dependencies {
 
+    implementation ("com.google.maps.android:android-maps-utils:3.8.0")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.places)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

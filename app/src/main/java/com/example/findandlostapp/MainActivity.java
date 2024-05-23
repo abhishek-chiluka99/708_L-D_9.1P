@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button create_btn, show_btn;
+    Button create_btn, show_btn,map_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         create_btn = findViewById(R.id.createbtn);
         show_btn = findViewById(R.id.showbtn);
-
+        map_btn = findViewById(R.id.map_btn);
         create_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Item_List.class);
+                startActivity(intent);
+            }
+        });
+
+        map_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LocationActivity.class);
                 startActivity(intent);
             }
         });
